@@ -44,3 +44,9 @@ Route::group(['middleware' => ['web', 'custom_auth']], function(){
     Route::post('/getprediction', 'PredictionController@getprediction')->name('getprediction');
     Route::post('/getcoordinates', 'PredictionController@getDataCoordinates')->name('getDataCoordinates');
 });
+
+//administracion modulo
+Route::group(['middleware' => ['web', 'custom_auth']], function(){
+    Route::get('/arquitectura_asociacion', 'AdministracionController@asociacion')->name('arquitectura_asociacion');
+
+});
