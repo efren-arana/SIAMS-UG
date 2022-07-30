@@ -40,6 +40,13 @@
 
             </li> -->
         </ul>
+        <ul class="nav side-menu">
+            <li><a><i class="fa fa-chart-line"></i> Administracion <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{ url('/arquitectura_asociacion') }}">Arquitectura de Reglas de Asociación</a></li>
+                </ul>
+            </li>
+        </ul>
     </div>
 
 </div>
