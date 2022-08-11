@@ -48,5 +48,6 @@ Route::group(['middleware' => ['web', 'custom_auth']], function(){
 //administracion modulo
 Route::group(['middleware' => ['web', 'custom_auth']], function(){
     Route::get('/arquitectura_asociacion', 'AdministracionController@asociacion')->name('arquitectura_asociacion');
+    Route::get('/monitoreo_siams', 'MonitoreoController@index')->name('monitoreo_siams');
 
 });
