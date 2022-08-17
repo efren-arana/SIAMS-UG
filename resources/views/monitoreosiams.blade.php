@@ -196,6 +196,38 @@
                     </div>
                 </div>
             </div>
+            <div class="row" style="padding-top: 10px;">
+                <table class="table table-responsive table-bordered">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>ID</th>
+                            <th>Estado</th>
+                            <th>Zona</th>
+                            <th>DNS</th>
+                            <th>IP Elastica</th>
+                            <th>Grupo Seguridad</th>
+                            <th>Nombre Clave</th>
+                            <th>S.O.</th>
+                            <th>Tipo de instancia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>New SIAMS</td>
+                            <td>i-06ca15a4a7667a850</td>
+                            <td>EE.UU. Este (Ohio)</td>
+                            <td>us-east-2a</td>
+                            <td>ec2-18-119-105-222.us-east-2.compute.amazonaws.com</td>
+                            <td>18.119.105.222</td>
+                            <td>launch-wizard-10</td>
+                            <td>AWS_Portal_SIAMS-UG</td>
+                            <td> Red Hat Enterprise Linux (inferido)</td>
+                            <td>t2.xlarge</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

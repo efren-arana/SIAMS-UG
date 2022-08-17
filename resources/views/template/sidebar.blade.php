@@ -41,10 +41,11 @@
             </li> -->
         </ul>
         <ul class="nav side-menu">
-            <li><a><i class="fa fa-chart-line"></i> Administracion <span class="fa fa-chevron-down"></span></a>
+            <li><a><i class="fa fa-bar-chart"></i> Administracion <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="{{ url('/arquitectura_asociacion') }}">Arquitectura de Reglas de Asociación</a></li>
                     <li><a href="{{ url('/monitoreo_siams') }}">Monitoreo</a></li>
+                    <li><a href="{{ url('/drones') }}">Drones</a></li>
                 </ul>
             </li>
         </ul>
