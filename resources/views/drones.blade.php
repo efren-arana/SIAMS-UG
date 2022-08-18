@@ -66,12 +66,12 @@ ul.checkout-bar li:nth-child(3):before {
 ul.checkout-bar li:nth-child(4):before {
   content: "4";
 }
-ul.checkout-bar li:nth-child(5):before {
+/* ul.checkout-bar li:nth-child(5):before {
   content: "5";
-}
-ul.checkout-bar li:nth-child(6):before {
+} */
+/* ul.checkout-bar li:nth-child(6):before {
   content: "6";
-}
+} */
 ul.checkout-bar a {
   color: #57aed1;
   font-size: 13px;
@@ -83,7 +83,7 @@ ul.checkout-bar a {
     content: "";
     height: 15px;
     width: 100%;
-    left: 50%;
+    left: 66%;
     position: absolute;
     top: -50px;
     z-index: 0;
@@ -113,7 +113,7 @@ ul.checkout-bar a {
   }
   ul.checkout-bar li {
     display: inline-block;
-    margin: 50px 0 0;
+    margin: 50px 40px 0 0;
     padding: 0;
     text-align: center;
     width: 19%;
@@ -134,7 +134,7 @@ ul.checkout-bar a {
     background-color: #57aed1;
     content: "";
     height: 15px;
-    left: 50%;
+    left: 66%;
     position: absolute;
     top: -50px;
     width: 100%;
@@ -184,23 +184,19 @@ ul.checkout-bar a {
 
                           {{-- <li class="previous visited">Ngrix</li> --}}
 
-                          <li class="active">
-                            <a href="#">Instancia EC2</a>
-                          </li>
+                          <li class="next">Instancia EC2</li>
                           
-                          <li class="next">Ngrix</li>
+                          <li class="">Ngrix</li>
 
                           <li class="">protocolo RTMP</li>
                           
                           <li class="">Base de datos</li>
-                          
-                          <li class="">Complete</li>
                              
                         </ul>
                     </div>
                 </div>
                 <br><br><br><br><br>
-                <button id="verificar_componente" class="btn btn-primary">Siguiente</button>
+                <button id="verificar_componente" class="btn btn-primary">Verificar</button>
             </div>
         </div>
         <br>
@@ -210,57 +206,86 @@ ul.checkout-bar a {
             </div>
             <div class="card-body">
               <div class="row">
-                <div class="col-sm-10 col-12">
+                <div class="">
                   <table class="table table-responsive table-bordered">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>Nombre Instancia</th>
-                            <th>Instancia ID</th>
-                            <th>Estado</th>
-                            <th>Zona</th>
-                            <th>DNS</th>
-                            <th>IP V4 Publica</th>
-                            <th>Grupo Seguridad</th>
-                            <th>S.O.</th>
-                            <th>Nombre de Clave</th>
-                            <th>Tipo de Instancia</th>
-                            <th>Estado de la Instancia</th>
-                        </tr>
+                    <thead>
+                      <tr>
+                        <th colspan="2">Detalles de la Instancia</th>
+                      </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>SIAMS-Drones</td>
-                            <td>i-0e99a42ea8fee6069</td>
-                            <td>EE.UU. Este (Ohio)</td>
-                            <td>us-east-2b</td>
-                            <td>ec2-3-140-64-90.us-east-2.compute.amazonaws.com</td>
-                            <td>3.140.64.90</td>
-                            <td>launch-wizard-7</td>
-                            <td>Debian (inferido)</td>
-                            <td>Drones_SIAMS</td>
-                            <td>t2.xlarge</td>
-                            <td>Running/Stoped</td>
-                        </tr>
+                      <tr>
+                        <td>Nombre Instancia</td>
+                        <td>SIAMS-Drones</td>
+                      </tr>
+                      <tr>
+                        <td>Instancia_ID</td>
+                        <td><a href="https://us-east-2.console.aws.amazon.com/ec2/v2/home?region=us-east-2#InstanceDetails:instanceId=i-0e99a42ea8fee6069">i-0e99a42ea8fee6069</a></td>
+                      </tr>
+                      <tr>
+                        <td>Estado</td>
+                        <td><a href="https://us-east-2.console.aws.amazon.com/ec2/v2/home?region=us-east-2#Instances:sort=keyName">EE.UU. Este (Ohio)</a></td>
+                      </tr>
+                      <tr>
+                        <td>Zona</td>
+                        <td>us-east-2b</td>
+                      </tr>
+                      <tr>
+                        <td>DNS</td>
+                        <td>ec2-3-140-64-90.us-east-2.compute.amazonaws.com</td>
+                      </tr>
+                      <tr>
+                        <td>IP V4 Publica</td>
+                        <td>3.140.64.90</td>
+                      </tr>
+                      <tr>
+                        <td>Grupo Seguridad</td>
+                        <td>launch-wizard-7</td>
+                      </tr>
+                      <tr>
+                        <td>S.O.</td>
+                        <td>Debian (inferido)</td>
+                      </tr>
+                      <tr>
+                        <td>Nombre de Clave</td>
+                        <td>Drones_SIAMS</td>
+                      </tr>
+                      <tr>
+                        <td>Tipo de Instancia</td>
+                        <td>t2.xlarge</td>
+                      </tr>
+                      <tr>
+                        <td>Estado de la Instancia</td>
+                        <td>Running/Stoped</td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
-                <div class="col-sm-2 col-12">
+                <div class="">
                   <div class="row">
+                    <div class="col-12"><br></div>
+                    <div class="col-12"><br></div>
+                    <div class="col-12"><br></div>
+                    <div class="col-12"><br></div>
                     <div class="col-12"><button class="btn btn-warning" id="apagar">Apagar Instancia</button></div>
                     <div class="col-12"><button class="btn btn-warning" id="encender">Encender Instancia</button></div>
                   </div>
                 </div>
               </div>
-              
             </div>
         </div>
         <br>
-        <div class="card card-body">
+        <div class="card">
+          <div class="card-header">
+            <h3>Monitoreo de la instancia SIAMS-DRONES</h3>
+          </div>
+          <div class="card-body">
             <canvas id="myChart" width="400" height="100"></canvas>
             <br>
             <canvas id="myChart2" width="400" height="100"></canvas>
             <br>
             <canvas id="myChart3" width="400" height="100"></canvas>
+        </div>
         </div>
     </div>
 </div>
@@ -301,7 +326,7 @@ ul.checkout-bar a {
         "2022-08-16T03:16:00+00:00"
       ],
                 datasets: [{
-                    label: 'CPUUtilization',
+                    label: 'CPUUtilization (Percent)',
                     data: [
                             0.21440025427938733,
                             0.3221907823979821,
@@ -366,7 +391,7 @@ ul.checkout-bar a {
         "2022-08-16T03:16:00+00:00"
       ],
                 datasets: [{
-                    label: 'NetworkIn',
+                    label: 'NetworkIn (Bytes)',
                     data: [
                             911876.0909090909,
                             3754.5102040816328,
@@ -431,7 +456,7 @@ ul.checkout-bar a {
         "2022-08-16T03:16:00+00:00"
       ],
                 datasets: [{
-                    label: 'NetworkOut',
+                    label: 'NetworkOut (Bytes)',
                     data: [
                             15510.527272727273,
                             27253.95918367347,
@@ -469,79 +494,37 @@ ul.checkout-bar a {
             }
         });
 
-        //prueba
-       /*  $(document).ready(function () {
-    var currentGfgStep, nextGfgStep, previousGfgStep;
-    var opacity;
-    var current = 1;
-    var steps = $("fieldset").length;
-  
-    setProgressBar(current);
-  
-    $(".next-step").click(function () {
-  
-        currentGfgStep = $(this).parent();
-        nextGfgStep = $(this).parent().next();
-  
-        $("#progressbar li").eq($("fieldset")
-            .index(nextGfgStep)).addClass("active");
-  
-        nextGfgStep.show();
-        currentGfgStep.animate({ opacity: 0 }, {
-            step: function (now) {
-                opacity = 1 - now;
-  
-                currentGfgStep.css({
-                    'display': 'none',
-                    'position': 'relative'
-                });
-                nextGfgStep.css({ 'opacity': opacity });
-            },
-            duration: 500
-        });
-        setProgressBar(++current);
-    });
-  
-    $(".previous-step").click(function () {
-  
-        currentGfgStep = $(this).parent();
-        previousGfgStep = $(this).parent().prev();
-  
-        $("#progressbar li").eq($("fieldset")
-            .index(currentGfgStep)).removeClass("active");
-  
-        previousGfgStep.show();
-  
-        currentGfgStep.animate({ opacity: 0 }, {
-            step: function (now) {
-                opacity = 1 - now;
-  
-                currentGfgStep.css({
-                    'display': 'none',
-                    'position': 'relative'
-                });
-                previousGfgStep.css({ 'opacity': opacity });
-            },
-            duration: 500
-        });
-        setProgressBar(--current);
-    });
-  
-    function setProgressBar(currentStep) {
-        var percent = parseFloat(100 / steps) * current;
-        percent = percent.toFixed();
-        $(".progress-bar")
-            .css("width", percent + "%")
-    }
-  
-    $(".submit").click(function () {
-        return false;
-    })
-});
- */
-  /* document.getElementById('verificar_componente').addEventListener('click', ()=>{
-    let elemento = document.querySelector('.next').classList.add('')
-  }) */
+  document.getElementById('verificar_componente').addEventListener('click', ()=>{
+    document.getElementById('verificar_componente').setAttribute('disabled', 'disabled');
+    let intervalo = setInterval(async function(){
+      let elemento = document.querySelector('.next');
+      if(elemento === null)
+      {
+        clearInterval(intervalo)
+      }
+      else
+      {
+        
+        /* console.log('previo: ', elemento.previousElementSibling) */
+        console.log('ejecutandose');
+        (elemento.textContent != null) ? elemento.textContent = 'Ejecutandose' : '';
+        await new Promise(r => setTimeout(r, 2000));
+        if(elemento.previousElementSibling != null)
+        {
+          elemento.previousElementSibling.classList.add('visited');
+          elemento.previousElementSibling.classList.remove('active');
+        }
+        elemento.classList.add('active');
+        elemento.classList.remove('next');
+        if(elemento.nextElementSibling != null)
+        {
+          elemento.nextElementSibling.classList.add('next');
+        }
+        (elemento.textContent != null) ? elemento.textContent ='Ejecutado' : '';
+      }
+    }, 3000);
+    
+  })
 
     </script>
 @endsection
