@@ -45,7 +45,16 @@
                 <ul class="nav child_menu">
                     <li><a href="{{ url('/arquitectura_asociacion') }}">Arquitectura de Reglas de Asociación</a></li>
                     <li><a href="{{ url('/monitoreo_siams') }}">Monitoreo</a></li>
-                    <li><a href="{{ url('/drones') }}">Drones</a></li>
+                    <li>
+                        <li><a> Drones <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{ url('/drones') }}#descripcion">Descripción</a></li>
+                            <li><a href="{{ url('/drones') }}#arquitectura">Arquitectura Drones</a></li>
+                            <li><a href="{{ url('/drones') }}#lista">Lista de verificación</a></li>
+                            <li><a href="{{ url('/drones') }}#datos">Datos de la instancia</a></li>
+                            <li><a href="{{ url('/drones') }}#monitoreo">Monitoreo de la instancia</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
         </ul>

@@ -151,7 +151,7 @@ ul.checkout-bar a {
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h3>Descripción</h3>
+                <h3 id="descripcion">Descripción</h3>
             </div>
             <div class="card-body">
                 <p style="color: black;">Este proyecto se enfoca en Recolección de Datos en Línea y fuera de línea, cuyos datos de georreferenciación e imágenes son analizados por algoritmos creados en Python para el procesamiento de imágenes y capturar fotogramas. Para almacenar la información recolectada bajo los procesos online u offline se hace uso de la plataforma de AWS (Amazon Web Services) alojando la información en una base de datos PostresSQL. Para la recolección de datos en línea se utiliza un servidor con el protocolo RTMP y para la recolección de datos fuera de línea se utiliza un proceso ad-hoc implementado en el servidor. A través de una plataforma web desarrollada en Java se realiza el proceso de recolección y administración de datos. </p>
@@ -160,18 +160,18 @@ ul.checkout-bar a {
         <br>
         <div class="card">
             <div class="card-header">
-                <h3>Arquitectura Drones</h3>
+                <h3 id="arquitectura">Arquitectura Drones</h3>
             </div>
             <div class="card-body">
                 <div class="col-12">
-                    <img style="width: 90%; height:auto;" src="{{asset('img/arquitectura/arquitectura_drones.png')}}" alt="arquitectura de los drones">
+                    <img style="width: 90%; height:auto;" src="{{asset('img/arquitectura/arquitectura_drones.png')}}" alt="arquitectura de los drones" title="Arquitectura drones" data-toggle="tooltip">
                 </div>
             </div>
         </div>
         <br>
         <div class="card">
             <div class="card-header">
-                <h3>Lista de verificación de los componentes</h3>
+                <h3 id="lista">Lista de verificación de los componentes</h3>
             </div>
             <div class="card-body">
                 <div class="col-12">
@@ -202,7 +202,7 @@ ul.checkout-bar a {
         <br>
         <div class="card">
             <div class="card-header">
-                <h3>Datos de la instancia y ejecución de procesos</h3>
+                <h3 id="datos">Datos de la instancia y ejecución de procesos</h3>
             </div>
             <div class="card-body">
               <div class="row">
@@ -267,8 +267,8 @@ ul.checkout-bar a {
                     <div class="col-12"><br></div>
                     <div class="col-12"><br></div>
                     <div class="col-12"><br></div>
-                    <div class="col-12"><button class="btn btn-warning" id="apagar">Apagar Instancia</button></div>
-                    <div class="col-12"><button class="btn btn-warning" id="encender">Encender Instancia</button></div>
+                    <div class="col-12"><button class="btn btn-warning" id="apagar_instancia">Apagar Instancia</button></div>
+                    <div class="col-12"><button class="btn btn-warning" id="encender_instancia">Encender Instancia</button></div>
                   </div>
                 </div>
               </div>
@@ -277,7 +277,7 @@ ul.checkout-bar a {
         <br>
         <div class="card">
           <div class="card-header">
-            <h3>Monitoreo de la instancia SIAMS-DRONES</h3>
+            <h3 id="monitoreo">Monitoreo de la instancia SIAMS-DRONES</h3>
           </div>
           <div class="card-body">
             <canvas id="myChart" width="400" height="100"></canvas>
@@ -523,6 +523,60 @@ ul.checkout-bar a {
       }
     }, 3000);
     
+  })
+
+  document.getElementById('encender_instancia').addEventListener('click', ()=>{
+
+    fetch('https://xqv4b5pdi8.execute-api.us-east-2.amazonaws.com/Develop/startinstance', {
+      method: 'OPTIONS', 
+      body: JSON.stringify({
+        region: "us-east-2a",
+        instanceId: "i-06ca15a4a7667a850"
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key' : 'LMkLjl3mELIdVmKcpoRG95pxetk5Zgg461YOytTg',
+      }
+    }).then(res => res.json())
+    .then(res => console.log(res))
+    .catch(function(error) {
+      console.log('Hubo un problema con la petición Fetch:' + error.message)})
+
+    })    
+
+  document.getElementById('apagar_instancia').addEventListener('click', ()=>{
+
+fetch('https://xqv4b5pdi8.execute-api.us-east-2.amazonaws.com/Develop/stopinstance', {
+    method: 'OPTIONS', 
+    body: JSON.stringify({
+      region: "us-east-2a",
+      instanceId: "i-06ca15a4a7667a850"
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key' : 'LMkLjl3mELIdVmKcpoRG95pxetk5Zgg461YOytTg'
+    }
+  }).then(res => res.json())
+  .then(res => console.log(res))
+  .catch(function(error) {
+    console.log('Hubo un problema con la petición Fetch:' + error.message)})
+
+  })
+
+
+  /* window.addEventListener('click', (e)=>{
+
+    console.log(e.target)
+
+    if(e.target.nodeName == 'IMG' && e.target.currentSrc == '{{asset('img/arquitectura/arquitectura_drones.png')}}')
+    {
+      console.log('adis')
+    }
+
+  }) */
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
   })
 
     </script>
