@@ -53,6 +53,7 @@
                             <li><a href="{{ url('/drones') }}#lista">Lista de verificación</a></li>
                             <li><a href="{{ url('/drones') }}#datos">Datos de la instancia</a></li>
                             <li><a href="{{ url('/drones') }}#monitoreo">Monitoreo de la instancia</a></li>
+                            <li><a href="{{ url('/drones') }}#documentar">Steps</a></li>
                         </ul>
                     </li>
                 </ul>

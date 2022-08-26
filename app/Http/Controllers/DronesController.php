@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 class DronesController extends Controller
 {
@@ -24,6 +25,36 @@ class DronesController extends Controller
     public function create()
     {
         //
+    }
+
+    public function describeinstance()
+    {
+        $client = new Client();
+        $url = 'https://xqv4b5pdi8.execute-api.us-east-2.amazonaws.com/Develop/describeinstance';
+        
+        $headers = [
+            'x-api-key' => 'LMkLjl3mELIdVmKcpoRG95pxetk5Zgg461YOytTg'
+        ];
+
+        $params = [
+            "instanceid" => "i-0e99a42ea8fee6069"
+        ];
+
+        $response = $client->request('POST', $url, [
+            'headers' => $headers,
+            'json' => $params
+        ]);
+
+        $responseBody = json_decode($response->getBody());
+        /* if($responseBody->resultCode == 200)
+        {
+            return $responseBody->state;
+        }
+        else
+        {
+            return 'error';
+        } */
+        return $response->getBody();
     }
 
     /**

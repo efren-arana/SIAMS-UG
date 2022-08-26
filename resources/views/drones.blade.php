@@ -54,6 +54,16 @@ ul.checkout-bar li.visited:before {
   background: #57aed1;
   z-index: 99999;
 }
+
+ul.checkout-bar li.error {
+  background: #ececec;
+  color: #f4030f;
+  z-index: 99999;
+}
+ul.checkout-bar li.error:before {
+  background: #f4030f;
+  z-index: 99999;
+}
 ul.checkout-bar li:nth-child(1):before {
   content: "1";
 }
@@ -164,8 +174,13 @@ ul.checkout-bar a {
             </div>
             <div class="card-body">
                 <div class="col-12">
-                    <img style="width: 90%; height:auto;" src="{{asset('img/arquitectura/arquitectura_drones.png')}}" alt="arquitectura de los drones" title="Arquitectura drones" data-toggle="tooltip">
-                </div>
+                  <img style="width: 90%; height:auto;" src="{{asset('img/arquitectura/arquitectura_drones.png')}}" alt="arquitectura de los drones" title="Arquitectura drones" data-toggle="tooltip" usemap="#workmap">
+                  <map name="workmap">
+                    <area shape="circle" coords="701,210,430,80" alt="Computer" title="Computer" onclick="alert('click en instancia')">
+                    <area shape="rect" coords="290,172,333,250" alt="Phone" onclick="alert('click en el teléfono')">
+                    <area shape="circle" coords="337,300,44" alt="Cup of coffee" onclick="alert('click en el café')">
+                  </map>
+                  </div>
             </div>
         </div>
         <br>
@@ -285,7 +300,59 @@ ul.checkout-bar a {
             <canvas id="myChart2" width="400" height="100"></canvas>
             <br>
             <canvas id="myChart3" width="400" height="100"></canvas>
+          </div>
         </div>
+        <br>
+        <div class="card">
+          <div class="card-header">
+            <h3 id="monitoreo">Pasos</h3>
+          </div>
+          <div class="card-body">
+            <!-- SmartWizard html -->
+            <div id="smartwizard">
+              <ul class="nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#step-1">
+                      <div class="num">1</div>
+                      Step Title
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#step-2">
+                      <span class="num">2</span>
+                      Step Title
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#step-3">
+                      <span class="num">3</span>
+                      Step Title
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="#step-4">
+                      <span class="num">4</span>
+                      Step Title
+                    </a>
+                  </li>
+              </ul>
+
+              <div class="tab-content">
+                  <div id="step-1" class="tab-pane" role="tabpanel" aria-labelledby="step-1">
+                      Step content 1
+                  </div>
+                  <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2">
+                      Step content 2
+                  </div>
+                  <div id="step-3" class="tab-pane" role="tabpanel" aria-labelledby="step-3">
+                      Step content 3
+                  </div>
+                  <div id="step-4" class="tab-pane" role="tabpanel" aria-labelledby="step-4">
+                      Step content 4
+                  </div>
+              </div>
+            </div>  
+          </div>
         </div>
     </div>
 </div>
@@ -494,7 +561,9 @@ ul.checkout-bar a {
             }
         });
 
-  document.getElementById('verificar_componente').addEventListener('click', ()=>{
+  /* document.getElementById('verificar_componente').addEventListener('click', async function()
+  {
+    let iteracion = 0;
     document.getElementById('verificar_componente').setAttribute('disabled', 'disabled');
     let intervalo = setInterval(async function(){
       let elemento = document.querySelector('.next');
@@ -504,8 +573,23 @@ ul.checkout-bar a {
       }
       else
       {
-        /* console.log('previo: ', elemento.previousElementSibling) */
         console.log('ejecutandose');
+
+        if(iteracion == 0)
+        {
+          let res_instancia = await describir_instancia();
+          console.log(res_instancia)
+          if(res_instancia == 'stopped')
+          {
+            if(elemento.previousElementSibling != null)
+            {
+              elemento.previousElementSibling.classList.add('error');
+              elemento.previousElementSibling.classList.remove('active');
+            }
+            clearInterval(intervalo);
+          }
+        }
+
         (elemento.textContent != null) ? elemento.textContent = 'Ejecutandose' : '';
         await new Promise(r => setTimeout(r, 2000));
         if(elemento.previousElementSibling != null)
@@ -520,18 +604,69 @@ ul.checkout-bar a {
           elemento.nextElementSibling.classList.add('next');
         }
         (elemento.textContent != null) ? elemento.textContent ='Ejecutado' : '';
+        iteracion++;
       }
-    }, 3000);
+    }, 20000);
+    
+  }) */
+
+  //prueba componentes
+  document.getElementById('verificar_componente').addEventListener('click', async function()
+  {
+    let iteracion = 0;
+    document.getElementById('verificar_componente').setAttribute('disabled', 'disabled');
+    while (true)
+    {
+      let elemento = document.querySelector('.next');
+      if(elemento === null)
+      {
+        return;
+      }
+      else
+      {
+        console.log('ejecutandose');
+
+        let res_instancia = await describir_instancia();
+        console.log(res_instancia)
+        if(res_instancia == 'stopped')
+        {
+          if(elemento.previousElementSibling != null)
+          {
+            elemento.previousElementSibling.classList.add('error');
+            elemento.previousElementSibling.classList.remove('active');
+          }
+          elemento.classList.add('error');
+          elemento.classList.remove('next');
+          return;
+        }
+
+        (elemento.textContent != null) ? elemento.textContent = 'Ejecutandose' : '';
+        if(elemento.previousElementSibling != null)
+        {
+          elemento.previousElementSibling.classList.add('visited');
+          elemento.previousElementSibling.classList.remove('active');
+        }
+        elemento.classList.add('active');
+        elemento.classList.remove('next');
+        if(elemento.nextElementSibling != null)
+        {
+          elemento.nextElementSibling.classList.add('next');
+        }
+        (elemento.textContent != null) ? elemento.textContent ='Ejecutado' : '';
+        iteracion++;
+      }
+    }
     
   })
+  //fin prueba componentes
 
   document.getElementById('encender_instancia').addEventListener('click', ()=>{
 
     fetch('https://xqv4b5pdi8.execute-api.us-east-2.amazonaws.com/Develop/startinstance', {
-      method: 'OPTIONS', 
+      method: 'POST', 
       body: JSON.stringify({
         region: "us-east-2a",
-        instanceId: "i-06ca15a4a7667a850"
+        instanceId: "i-0e99a42ea8fee6069"
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -546,11 +681,11 @@ ul.checkout-bar a {
 
   document.getElementById('apagar_instancia').addEventListener('click', ()=>{
 
-fetch('https://xqv4b5pdi8.execute-api.us-east-2.amazonaws.com/Develop/stopinstance', {
-    method: 'OPTIONS', 
+  fetch('https://xqv4b5pdi8.execute-api.us-east-2.amazonaws.com/Develop/stopinstance', {
+    method: 'POST', 
     body: JSON.stringify({
       region: "us-east-2a",
-      instanceId: "i-06ca15a4a7667a850"
+      instanceId: "i-0e99a42ea8fee6069"
     }),
     headers: {
       'Content-Type': 'application/json',
@@ -564,20 +699,43 @@ fetch('https://xqv4b5pdi8.execute-api.us-east-2.amazonaws.com/Develop/stopinstan
   })
 
 
-  /* window.addEventListener('click', (e)=>{
+  addEventListener('click', (e)=>{
 
     console.log(e.target)
 
-    if(e.target.nodeName == 'IMG' && e.target.currentSrc == '{{asset('img/arquitectura/arquitectura_drones.png')}}')
+    console.log(e)
+
+    /* if(e.target.nodeName == 'IMG' && e.target.currentSrc == '{{asset('img/arquitectura/arquitectura_drones.png')}}')
     {
       console.log('adis')
-    }
+    } */
 
-  }) */
+  })
+
+  //solicitar info de la instancia
+
+  async function describir_instancia(){
+    let resp;
+    await fetch('describirinstancia')
+    .then(res => res.json())
+    .then(res => {
+      //console.log('state:', res.state)
+      resp = res.state
+      return resp;
+    })
+    return resp;
+  }
+  
+  //fin de solicitar info de la instancia
 
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   })
+
+  $(function() {
+    // SmartWizard initialize
+    $('#smartwizard').smartWizard({theme: 'arrows'});
+});
 
     </script>
 @endsection
