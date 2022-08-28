@@ -665,12 +665,11 @@ ul.checkout-bar a {
     fetch('https://xqv4b5pdi8.execute-api.us-east-2.amazonaws.com/Develop/startinstance', {
       method: 'POST', 
       body: JSON.stringify({
-        region: "us-east-2a",
+        region: "us-east-2",
         instanceId: "i-0e99a42ea8fee6069"
       }),
       headers: {
-        'Content-Type': 'application/json',
-        'x-api-key' : 'LMkLjl3mELIdVmKcpoRG95pxetk5Zgg461YOytTg',
+        'Content-Type': 'application/json'
       }
     }).then(res => res.json())
     .then(res => console.log(res))
@@ -684,12 +683,13 @@ ul.checkout-bar a {
   fetch('https://xqv4b5pdi8.execute-api.us-east-2.amazonaws.com/Develop/stopinstance', {
     method: 'POST', 
     body: JSON.stringify({
-      region: "us-east-2a",
+      region: "us-east-2",
       instanceId: "i-0e99a42ea8fee6069"
     }),
     headers: {
-      'Content-Type': 'application/json',
-      'x-api-key' : 'LMkLjl3mELIdVmKcpoRG95pxetk5Zgg461YOytTg'
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+
     }
   }).then(res => res.json())
   .then(res => console.log(res))
