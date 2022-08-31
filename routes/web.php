@@ -51,5 +51,7 @@ Route::group(['middleware' => ['web', 'custom_auth']], function(){
     Route::get('/monitoreo_siams', 'MonitoreoController@index')->name('monitoreo_siams');
     Route::get('/drones', 'DronesController@index')->name('drones');
     Route::get('describirinstancia', 'DronesController@describeinstance')->name('describirinstancia');
+    Route::get('apagarinstancia', 'DronesController@apagarinstancia')->name('apagarinstancia');
+    Route::get('encenderinstancia', 'DronesController@encenderinstancia')->name('encenderinstancia');
 
 });

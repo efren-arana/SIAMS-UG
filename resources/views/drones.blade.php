@@ -662,16 +662,8 @@ ul.checkout-bar a {
 
   document.getElementById('encender_instancia').addEventListener('click', ()=>{
 
-    fetch('https://xqv4b5pdi8.execute-api.us-east-2.amazonaws.com/Develop/startinstance', {
-      method: 'POST', 
-      body: JSON.stringify({
-        region: "us-east-2",
-        instanceId: "i-0e99a42ea8fee6069"
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(res => res.json())
+    fetch('encenderinstancia')
+    .then(res => res.json())
     .then(res => console.log(res))
     .catch(function(error) {
       console.log('Hubo un problema con la petición Fetch:' + error.message)})
@@ -680,18 +672,7 @@ ul.checkout-bar a {
 
   document.getElementById('apagar_instancia').addEventListener('click', ()=>{
 
-  fetch('https://xqv4b5pdi8.execute-api.us-east-2.amazonaws.com/Develop/stopinstance', {
-    method: 'POST', 
-    body: JSON.stringify({
-      region: "us-east-2",
-      instanceId: "i-0e99a42ea8fee6069"
-    }),
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-
-    }
-  }).then(res => res.json())
+  fetch('apagarinstancia').then(res => res.json())
   .then(res => console.log(res))
   .catch(function(error) {
     console.log('Hubo un problema con la petición Fetch:' + error.message)})

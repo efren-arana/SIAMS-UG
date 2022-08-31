@@ -57,6 +57,68 @@ class DronesController extends Controller
         return $response->getBody();
     }
 
+    public function apagarinstancia()
+    {
+        $client = new Client();
+        $url = 'https://xqv4b5pdi8.execute-api.us-east-2.amazonaws.com/Develop/stopinstance';
+        
+        $headers = [
+            'x-api-key' => 'LMkLjl3mELIdVmKcpoRG95pxetk5Zgg461YOytTg'
+        ];
+
+        $params = [
+            "region" => "us-east-2",
+            "instanceId" => "i-0e99a42ea8fee6069"
+        ];
+
+        $response = $client->request('POST', $url, [
+            'headers' => $headers,
+            'json' => $params
+        ]);
+
+        $responseBody = json_decode($response->getBody());
+        /* if($responseBody->resultCode == 200)
+        {
+            return $responseBody->state;
+        }
+        else
+        {
+            return 'error';
+        } */
+        return $response->getBody();
+    }
+
+    public function encenderinstancia()
+    {
+        $client = new Client();
+        $url = 'https://xqv4b5pdi8.execute-api.us-east-2.amazonaws.com/Develop/startinstance';
+        
+        $headers = [
+            'x-api-key' => 'LMkLjl3mELIdVmKcpoRG95pxetk5Zgg461YOytTg'
+        ];
+
+        $params = [
+            "region" => "us-east-2",
+            "instanceId" => "i-0e99a42ea8fee6069"
+        ];
+
+        $response = $client->request('POST', $url, [
+            'headers' => $headers,
+            'json' => $params
+        ]);
+
+        $responseBody = json_decode($response->getBody());
+        /* if($responseBody->resultCode == 200)
+        {
+            return $responseBody->state;
+        }
+        else
+        {
+            return 'error';
+        } */
+        return $response->getBody();
+    }
+
     /**
      * Store a newly created resource in storage.
      *
